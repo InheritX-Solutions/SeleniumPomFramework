@@ -5,3 +5,9 @@
 /target/
 /logs/*
 /test-output/*
+target/
+*.class
+*.log
+.DS_Store
+allure-results/
+logs/
