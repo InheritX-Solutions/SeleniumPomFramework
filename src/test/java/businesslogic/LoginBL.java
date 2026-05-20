@@ -43,7 +43,7 @@ public class LoginBL extends ExtentReportBuilder {
 					"Exception while launching url.", mthName);
 			Assert.fail();
 		}
-
+ 
 	}
 
 	// enter username method
