@@ -39,7 +39,7 @@ public class ApplicationSetup extends ExtentReportBuilder {
 	public static String UID;
 	public static String PAS;
 	public static WebDriver driver;
-	public static String filepath = System.getProperty("user.dir") + "\\src\\main\\resources\\datapool\\" + "EnvData.properties";
+	public static String filepath = System.getProperty("user.dir") + "/src/main/resources/datapool/" + "EnvData.properties";
 	public static String browserName;
 	public static String environmentName;
 	static String downloadpath;
@@ -58,6 +58,8 @@ public class ApplicationSetup extends ExtentReportBuilder {
 	public synchronized void init(@Optional("") String environment,@Optional("") String browser,@Optional("") String nodeUrl,@Optional("") String groups,@Optional("") String testing) throws Exception {
 		
 		testURL= objCU.readPropertyFileEnvProperty("DEVURL");
+		UID = objCU.readPropertyFileEnvProperty(ConstantVariables.DEVUID);
+		PAS = objCU.readPropertyFileEnvProperty(ConstantVariables.DEVPAS);
 		environmentName = environment;
 		
 		System.out.println("URL is for testing before opening browser:   "+testURL);
@@ -94,11 +96,8 @@ public class ApplicationSetup extends ExtentReportBuilder {
 		
 		}
 		    System.out.println("URL for testing :  "+testURL);
-			startBrowser(browser,nodeUrl);
-			if(testing.equalsIgnoreCase("UI"))
-			{
-				driver.get(testURL);
-			}			
+			startBrowser(browser, nodeUrl);
+			driver.get(testURL);			
 			
 		ExtentReportBuilder.initExtentReport();
 		
@@ -232,22 +231,15 @@ public class ApplicationSetup extends ExtentReportBuilder {
 	 * Close browser
 	 */
 	@AfterTest(alwaysRun = true)
-//	public synchronized void tearDown() {
-//		try {
-//		//	driver.quit();
-//			log.debug("Application Closed sucessfully");
-//			Runtime.getRuntime().exec("taskkill /F /IM chromedriver*");
-//			ExtentReportBuilder.ConcludeTestSuite();
-//			//ExtentReportBuilder.SendEmailwithReport();
-//		} catch (Exception e) {
-//			try {
-//				Runtime.getRuntime().exec("taskkill /F /IM chromedriver32.exe");
-//				log.debug("Application Closed force-fully ");
-//			} catch (IOException err) {
-//				log.error("IOException in <tearDown> " + err.getMessage());
-//			}
-//		}
-	//}
+	public synchronized void tearDown() {
+		try {
+			if (driver != null) driver.quit();
+			log.debug("Application Closed successfully");
+			ExtentReportBuilder.ConcludeTestSuite();
+		} catch (Exception e) {
+			log.error("IOException in <tearDown> " + e.getMessage());
+		}
+	}
 
 	/**
 	 * This is used to get driver with threadlocal

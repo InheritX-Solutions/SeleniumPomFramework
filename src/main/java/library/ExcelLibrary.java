@@ -36,7 +36,7 @@ public class ExcelLibrary {
 	static String currentDir = System.getProperty("user.dir")+"/";
 	private static final Logger logger = LogManager.getLogger(ExcelLibrary.class);
 	/**
-	 * @author Abirami To get the excel sheet workbook
+	 * @author Vijender Raika To get the excel sheet workbook
 	 * @throws IOException 
 	 * @throws EncryptedDocumentException 
 	 */
@@ -58,7 +58,7 @@ public class ExcelLibrary {
 	}
 
 	/**
-	 * @author Abirami
+	 * @author Vijender Raika
 	 * 
 	 * @Purpose To get the number of sheets in excel suite
 	 * 

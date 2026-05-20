@@ -5,13 +5,15 @@ import java.text.ParseException;
 import java.time.Duration;
 import java.util.Scanner;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import automationEngine.ApplicationSetup;
+import utilities.CommonUtilities;
 import objectRepository.LoginPageOR;
 import utilities.CommonMethods;
 import utilities.ExtentReportBuilder;
-import utilities.RWExcel;
 
 public class LoginBL extends ExtentReportBuilder {
 
@@ -19,7 +21,7 @@ public class LoginBL extends ExtentReportBuilder {
 	CommonMethods commonmethods = new CommonMethods();
 	LoginPageOR loginpageor = new LoginPageOR();
 	Duration due = Duration.ofSeconds(30);
-	RWExcel exceldata = new RWExcel();
+	CommonUtilities objCU = new CommonUtilities();
 
 	// To launch the application
 
@@ -50,8 +52,9 @@ public class LoginBL extends ExtentReportBuilder {
 		try {
 			mthName = new Object() {
 			}.getClass().getEnclosingMethod().getName();
-
-			commonmethods.setText(driver, loginpageor.email, exceldata.readCell("loginpage", "username"));
+			commonmethods.click(driver, By.xpath("//a[@title='My Account']"));
+			commonmethods.click(driver, By.linkText("Login"));
+			commonmethods.setText(driver, loginpageor.email, ApplicationSetup.UID);
 
 			if (commonmethods.isElementPresent(driver, loginpageor.email)) {
 				ExtentReportBuilder.ReportTestStep("PASSED", "PASS", "User entered the username", mthName);
@@ -73,7 +76,7 @@ public class LoginBL extends ExtentReportBuilder {
 			mthName = new Object() {
 			}.getClass().getEnclosingMethod().getName();
 
-			commonmethods.setText(driver, loginpageor.password, exceldata.readCell("loginpage", "password"));
+			commonmethods.setText(driver, loginpageor.password, ApplicationSetup.PAS);
 
 			if (commonmethods.isElementPresent(driver, loginpageor.password)) {
 				ExtentReportBuilder.ReportTestStep("PASSED", "PASS", "Used entered the password", mthName);
@@ -88,24 +91,7 @@ public class LoginBL extends ExtentReportBuilder {
 	}
 	
 	
-	public void enterPhoneNo(WebDriver driver) throws IOException, ParseException {
-		try {
-			mthName = new Object() {
-			}.getClass().getEnclosingMethod().getName();
-			Thread.sleep(3000);
-			commonmethods.setText(driver, loginpageor.EnterPhone, exceldata.readCell("loginpage", "EnterPhoneNo"));
-			if (commonmethods.isElementPresent(driver, loginpageor.EnterPhone)) {
-				ExtentReportBuilder.ReportTestStep("PASSED", "PASS", "Used entered the password", mthName);
-			} else {
-				ExtentReportBuilder.ReportTestStep("FAILED", "FAIL", "User is NOT entered the password", mthName);
-			}
-		} catch (Exception e) {
-			ExtentReportBuilder.ReportTestStep("FAILED", "FAIL", "User is NOT entered the password" + e, mthName);
-			e.printStackTrace();
-			Assert.fail();
-		}
 
-	}
 	
 	
 	

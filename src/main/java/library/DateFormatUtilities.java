@@ -12,7 +12,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 /**
- * @author Abirami Custom Methods of different Date format.
+ * @author Vijender Raika Custom Methods of different Date format.
  */
 
 public class DateFormatUtilities {
@@ -526,7 +526,7 @@ public class DateFormatUtilities {
 	}
 
 	/*
-	 * @Author: Abirami
+	 * @Author: Vijender Raika
 	 * 
 	 * Purpose: This is used to generate randomString
 	 */
@@ -541,7 +541,7 @@ public class DateFormatUtilities {
 	/*
 	 * Get No. of Weeks between two dates
 	 * 
-	 * @author:Abirami
+	 * @author:Vijender Raika
 	 *  
 	 * @Purpose: This function is used to Get No. of Weeks between two dates
 	 */
@@ -580,7 +580,7 @@ public class DateFormatUtilities {
 	}
 
 	/**
-	 * @author Abirami
+	 * @author Vijender Raika
 	 * @purpose to get business working days between two dates
 	 * @param startDate
 	 * @param endDate
@@ -620,7 +620,7 @@ public class DateFormatUtilities {
 	}
 
 	/**
-	 * @author Abirami
+	 * @author Vijender Raika
 	 * @purpose to convert date in required format from any format
 	 * @param originalDateString
 	 * @param fromFormat
@@ -645,7 +645,7 @@ public class DateFormatUtilities {
 	}
 
 	/**
-	 * @author Abirami
+	 * @author Vijender Raika
 	 * @purpose This method will return the value of next nth date from the current
 	 *          date
 	 * @param difference
@@ -662,7 +662,7 @@ public class DateFormatUtilities {
 	}
 
 	/**
-	 * @author Abirami
+	 * @author Vijender Raika
 	 * @purpose To get Current Week Monday
 	 * @return date of Monday from current week
 	 * @throws ParseException 
@@ -677,7 +677,7 @@ public class DateFormatUtilities {
 	}
 
 	/**
-	 * @author Abirami
+	 * @author Vijender Raika
 	 * @purpose To get Tuesday of given date week
 	 * @return date of Tuesday of given date week
 	 * @throws Exception
@@ -691,7 +691,7 @@ public class DateFormatUtilities {
 	}
 
 	/**
-	 * @author Abirami
+	 * @author Vijender Raika
 	 * @purpose To get Thursday of given date week
 	 * @return date of Thursday of given date week
 	 * @throws ParseException 
@@ -706,7 +706,7 @@ public class DateFormatUtilities {
 	}
 
 	/**
-	 * @author Abirami
+	 * @author Vijender Raika
 	 * @purpose To get Current Week Sunday
 	 * @return date of Sunday from current week
 	 * @throws ParseException 
@@ -721,7 +721,7 @@ public class DateFormatUtilities {
 	}
 
 	/**
-	 * @author Abirami
+	 * @author Vijender Raika
 	 * @purpose To Add Business Days to Date
 	 * @return Date with added business days
 	 * @throws Exception
@@ -753,7 +753,7 @@ public class DateFormatUtilities {
 	}
 
 	/**
-	 * @author Abirami
+	 * @author Vijender Raika
 	 * @purpose To Check if the given date is with in specified range
 	 * @return True/False if date is in given range
 	 * @throws ParseException 
@@ -768,7 +768,7 @@ public class DateFormatUtilities {
 	}
 
 	/**
-	 * @author Abirami
+	 * @author Vijender Raika
 	 * @purpose This method will return the true is date in argument is before the
 	 *          current date else return false
 	 * @return
@@ -787,7 +787,7 @@ public class DateFormatUtilities {
 	}
 
 	/**
-	 * @author Abirami
+	 * @author Vijender Raika
 	 * @purpose This method will return the true is darte in argument is before the
 	 *          current date else return false
 	 * @return
@@ -847,7 +847,7 @@ public class DateFormatUtilities {
 	}
 
 	/**
-	 * @author Abirami
+	 * @author Vijender Raika
 	 * @purpose get DateTime format string value of DateTime String value
 	 * @param dateTimeString
 	 */
@@ -869,7 +869,7 @@ public class DateFormatUtilities {
 	}
 
 	/**
-	 * @author Abirami
+	 * @author Vijender Raika
 	 * @purpose To get Day from week
 	 * @return day from current week by date
 	 * @throws Exception
@@ -896,7 +896,7 @@ public class DateFormatUtilities {
 	}
 
 	/**
-	 * @author Abirami
+	 * @author Vijender Raika
 	 * @purpose To Get Current Date Time in common MM-dd-yyyy HH-mm-ss format
 	 * @note
 	 */

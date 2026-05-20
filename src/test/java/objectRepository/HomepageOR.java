@@ -4,12 +4,12 @@ import org.openqa.selenium.By;
 
 public class HomepageOR {
 
-    public static final By LOGO = By.xpath("//a[normalize-space()='Qafox.com']");
+    public static final By LOGO = By.xpath("//div[@id='logo']//a");
 
-    public static final By CURRENCY_DROPDOWN = By.xpath("//span[text()='Currency']");
+    public static final By CURRENCY_DROPDOWN = By.xpath("//button[@class='btn btn-link dropdown-toggle']");
     public static final By CURRENCY_USD = By.xpath("//button[@name='USD']");
 
-    public static final By MY_ACCOUNT = By.xpath("//span[text()='My Account']");
+    public static final By MY_ACCOUNT = By.xpath("//a[@title='My Account']");
     public static final By REGISTER = By.xpath("//a[text()='Register']");
 
     public static final By FIRSTNAME = By.id("input-firstname");
@@ -24,14 +24,14 @@ public class HomepageOR {
     public static final By SUCCESS_MSG = By.xpath("//h1[text()='Your Account Has Been Created!']");
 
     public static final By SEARCH_BOX = By.name("search");
-    public static final By SEARCH_BUTTON = By.xpath("//div[@id='search']/span/button");
+    public static final By SEARCH_BUTTON = By.xpath("//div[@id='search']//button");
 
     public static final By PRODUCT_NAME = By.xpath("//div[@class='caption']/h4/a");
     public static final By PRODUCT_PRICE = By.xpath("//p[@class='price']");
 
     public static final By HP_PRODUCT = By.xpath("//a[text()='HP LP3065']");
     public static final By ADD_TO_CART = By.id("button-cart");
-    public static final By CHECKOUT = By.xpath("//a[contains(text(),'Checkout')]");
+    public static final By CHECKOUT = By.xpath("(//a[contains(@href,'checkout')])[6]");
 
     public static final By ORDER_SUCCESS = By.xpath("//h1[text()='Your order has been placed!']");
 }

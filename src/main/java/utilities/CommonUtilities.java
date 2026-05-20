@@ -38,8 +38,8 @@ public class CommonUtilities {
 	Properties prop;
 
 	File file = new File(System.getProperty("user.dir")
-			+ "\\src\\main\\resources\\dataPool\\EnvData.properties");
-	String filepath = System.getProperty("user.dir") + "\\src\\main\\resources\\datapool\\" + "EnvData.properties";
+			+ "/src/main/resources/datapool/EnvData.properties");
+	String filepath = System.getProperty("user.dir") + "/src/main/resources/datapool/" + "EnvData.properties";
 	String resourcesPath = this.readPropertyFile(filepath, "ResourcesPath");
 	String reportsFolderPath = this.readPropertyFile(filepath, "TestReport");
 
@@ -250,7 +250,7 @@ public class CommonUtilities {
 	 */
 	public ArrayList<String> printTheConsoleMessage()
 	{
-		LogEntries logEntries = ApplicationSetup.driver.manage().logs().get(LogType.BROWSER);
+		LogEntries logEntries = base.DriverFactory.getDriver().manage().logs().get(LogType.BROWSER);
 		ArrayList<String> entryMsg = new ArrayList<String>();
 		 
 		 for(LogEntry entry : logEntries){

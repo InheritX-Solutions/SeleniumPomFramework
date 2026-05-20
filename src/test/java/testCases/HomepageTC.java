@@ -22,16 +22,10 @@ public class HomepageTC extends ApplicationSetup {
         try {
             commonutilities.browserTCcounter(browser);
             home.validateLogo(driver);
-            ExtentReportBuilder.ReportTestStep("Console Messages: ", "PASS",
-                    commonutilities.printTheConsoleMessage().toString());
-            ExtentReportBuilder.ReportTestStep("validateLogoTC Passed", "PASS",
-                    commonutilities.generateRandomNumericString());
+            ExtentReportBuilder.ReportTestStep("validateLogoTC Passed", "PASS", commonutilities.generateRandomNumericString());
             ExtentReportBuilder.CompleteTest();
         } catch (Exception e) {
-            Thread thread = new Thread();
-            thread.interrupt();
-            ExtentReportBuilder.ReportTestStep("Error in validateLogoTC", "ERROR",
-                    commonutilities.generateRandomNumericString());
+            ExtentReportBuilder.ReportTestStep("Error in validateLogoTC", "ERROR", e.getMessage());
             ExtentReportBuilder.CompleteTest();
             Assert.fail();
         }
@@ -45,16 +39,10 @@ public class HomepageTC extends ApplicationSetup {
         try {
             commonutilities.browserTCcounter(browser);
             home.selectDollar(driver);
-            ExtentReportBuilder.ReportTestStep("Console Messages: ", "PASS",
-                    commonutilities.printTheConsoleMessage().toString());
-            ExtentReportBuilder.ReportTestStep("selectDollarTC Passed", "PASS",
-                    commonutilities.generateRandomNumericString());
+            ExtentReportBuilder.ReportTestStep("selectDollarTC Passed", "PASS", commonutilities.generateRandomNumericString());
             ExtentReportBuilder.CompleteTest();
         } catch (Exception e) {
-            Thread thread = new Thread();
-            thread.interrupt();
-            ExtentReportBuilder.ReportTestStep("Error in selectDollarTC", "ERROR",
-                    commonutilities.generateRandomNumericString());
+            ExtentReportBuilder.ReportTestStep("Error in selectDollarTC", "ERROR", e.getMessage());
             ExtentReportBuilder.CompleteTest();
             Assert.fail();
         }
@@ -67,24 +55,11 @@ public class HomepageTC extends ApplicationSetup {
         ExtentReportBuilder.ReportInitialization("Register User - " + browser);
         try {
             commonutilities.browserTCcounter(browser);
-
-            home.registerUser(driver,
-                    "Vijendra",
-                    "Raika",
-                    "vijendra@test.com",
-                    "9876543210",
-                    "Test@123");
-
-            ExtentReportBuilder.ReportTestStep("Console Messages: ", "PASS",
-                    commonutilities.printTheConsoleMessage().toString());
-            ExtentReportBuilder.ReportTestStep("registerUserTC Passed", "PASS",
-                    commonutilities.generateRandomNumericString());
+            home.registerUser(driver, "Vijendra", "Raika", "vijendra@test.com", "9876543210", "Test@123");
+            ExtentReportBuilder.ReportTestStep("registerUserTC Passed", "PASS", commonutilities.generateRandomNumericString());
             ExtentReportBuilder.CompleteTest();
         } catch (Exception e) {
-            Thread thread = new Thread();
-            thread.interrupt();
-            ExtentReportBuilder.ReportTestStep("Error in registerUserTC", "ERROR",
-                    commonutilities.generateRandomNumericString());
+            ExtentReportBuilder.ReportTestStep("Error in registerUserTC", "ERROR", e.getMessage());
             ExtentReportBuilder.CompleteTest();
             Assert.fail();
         }
@@ -98,16 +73,10 @@ public class HomepageTC extends ApplicationSetup {
         try {
             commonutilities.browserTCcounter(browser);
             home.searchAllProducts(driver);
-            ExtentReportBuilder.ReportTestStep("Console Messages: ", "PASS",
-                    commonutilities.printTheConsoleMessage().toString());
-            ExtentReportBuilder.ReportTestStep("searchProductsTC Passed", "PASS",
-                    commonutilities.generateRandomNumericString());
+            ExtentReportBuilder.ReportTestStep("searchProductsTC Passed", "PASS", commonutilities.generateRandomNumericString());
             ExtentReportBuilder.CompleteTest();
         } catch (Exception e) {
-            Thread thread = new Thread();
-            thread.interrupt();
-            ExtentReportBuilder.ReportTestStep("Error in searchProductsTC", "ERROR",
-                    commonutilities.generateRandomNumericString());
+            ExtentReportBuilder.ReportTestStep("Error in searchProductsTC", "ERROR", e.getMessage());
             ExtentReportBuilder.CompleteTest();
             Assert.fail();
         }
@@ -121,16 +90,10 @@ public class HomepageTC extends ApplicationSetup {
         try {
             commonutilities.browserTCcounter(browser);
             home.checkoutHP(driver);
-            ExtentReportBuilder.ReportTestStep("Console Messages: ", "PASS",
-                    commonutilities.printTheConsoleMessage().toString());
-            ExtentReportBuilder.ReportTestStep("checkoutHP_TC Passed", "PASS",
-                    commonutilities.generateRandomNumericString());
+            ExtentReportBuilder.ReportTestStep("checkoutHP_TC Passed", "PASS", commonutilities.generateRandomNumericString());
             ExtentReportBuilder.CompleteTest();
         } catch (Exception e) {
-            Thread thread = new Thread();
-            thread.interrupt();
-            ExtentReportBuilder.ReportTestStep("Error in checkoutHP_TC", "ERROR",
-                    commonutilities.generateRandomNumericString());
+            ExtentReportBuilder.ReportTestStep("Error in checkoutHP_TC", "ERROR", e.getMessage());
             ExtentReportBuilder.CompleteTest();
             Assert.fail();
         }

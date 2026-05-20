@@ -513,30 +513,31 @@ public class ExtentReportBuilder {
 	}
 
 	private static String CaptureScreen(String imagePath) throws IOException {
-
-		String format;
-		String fileName;
-		
-			format="png";
-			fileName = System.getProperty("user.dir") + "/" + screenshotExtentReportLocation + "Screenshot_"
-					+ CommonUtilities.generateRandomString() + "." + format;
-		
+		String format = "png";
+		String fileName = System.getProperty("user.dir") + "/" + screenshotExtentReportLocation + "Screenshot_"
+				+ CommonUtilities.generateRandomString() + "." + format;
 		if (imagePath == null || imagePath.isEmpty())
 			imagePath = fileName;
-		File scrFile = null;
+
+		// Resolve active driver: prefer ApplicationSetup static driver, fall back to DriverFactory ThreadLocal
+		org.openqa.selenium.WebDriver activeDriver = ApplicationSetup.driver;
+		if (activeDriver == null && base.DriverFactory.isDriverActive()) {
+			activeDriver = base.DriverFactory.getDriver();
+		}
+		if (activeDriver == null) {
+			logger.warn("CaptureScreen skipped - no active driver");
+			return imagePath;
+		}
+
 		try {
-			scrFile = ((TakesScreenshot) ApplicationSetup.driver).getScreenshotAs(OutputType.FILE);
-			// Now you can do whatever you need to do with it, for example copy somewhere
-			
-				File DestFile = new File(imagePath);
-				com.google.common.io.Files.copy(scrFile, DestFile);
-				imagePath = "../" + screenshotExtentReportLocation + "Screenshot_" + CommonUtilities.generateRandomString()+ "." + format;;
-			
+			File scrFile = ((TakesScreenshot) activeDriver).getScreenshotAs(OutputType.FILE);
+			File DestFile = new File(imagePath);
+			DestFile.getParentFile().mkdirs();
+			com.google.common.io.Files.copy(scrFile, DestFile);
+			imagePath = "../" + screenshotExtentReportLocation + "Screenshot_" + CommonUtilities.generateRandomString() + "." + format;
 		} catch (TimeoutException seleniumTimeout) {
 			logger.error("time out occurred", seleniumTimeout);
-
 		}
-		
 		return imagePath;
 	}
 
@@ -1433,10 +1434,10 @@ public class ExtentReportBuilder {
 
 		// configuration items to change the look and feel
 		// add content, manage tests etc
-		extent.setSystemInfo("Host Name", " - " + ApplicationSetup.testURL);
-		extent.setSystemInfo("Environment", " - " + ApplicationSetup.environmentName.toUpperCase());
+		extent.setSystemInfo("Host Name", " - " + System.getProperty("base.url", ""));
+		extent.setSystemInfo("Environment", " - " + System.getProperty("env", System.getProperty("environment", "dev")).toUpperCase());
 		extent.setSystemInfo("Executed By", " - " + System.getProperty("user.name"));
-		extent.setSystemInfo("Suite :", ApplicationSetup.groupsDetails);
+		extent.setSystemInfo("Suite :", System.getProperty("groups", ""));
 		
 		// configuration items to change the look and feel
 		// add content, manage tests etc
@@ -1473,7 +1474,7 @@ public class ExtentReportBuilder {
 
 							protected PasswordAuthentication getPasswordAuthentication() {
 
-							return new PasswordAuthentication("abirami.chinnaiyan@rishabhsoft.com", "********");
+							return new PasswordAuthentication("vijender.raika@rishabhsoft.com", "********");
 
 							}
 
@@ -1485,10 +1486,10 @@ public class ExtentReportBuilder {
 					Message message = new MimeMessage(session);
 
 					// Set the from address
-					message.setFrom(new InternetAddress("abirami.chinnaiyan@rishabhsoft.com"));
+					message.setFrom(new InternetAddress("vijender.raika@rishabhsoft.com"));
 
 					// Set the recipient address
-					message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("abirami.chinnaiyan@rishabhsoft.com"));
+					message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("vijender.raika@rishabhsoft.com"));
 		            
 		                        // Add the subject link
 					message.setSubject("Automated Test Report");

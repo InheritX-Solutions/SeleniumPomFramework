@@ -12,18 +12,14 @@ import org.testng.Assert;
 import objectRepository.HomepageOR;
 import utilities.CommonMethods;
 import utilities.ExtentReportBuilder;
-import utilities.RWExcel;
 
 public class HomepageLogoD extends ExtentReportBuilder {
 
-    String mthName;
     CommonMethods cm = new CommonMethods();
-    RWExcel exceldata = new RWExcel();
     Duration due = Duration.ofSeconds(20);
 
     public void validateLogo(WebDriver driver) throws IOException, ParseException {
         try {
-            mthName = new Object() {}.getClass().getEnclosingMethod().getName();
             cm.waitUntillVisibilityOfElement(driver, HomepageOR.LOGO, due);
             if (cm.isElementPresent(driver, HomepageOR.LOGO)) {
                 ReportTestStep("QAfox logo validated", "PASS", "");
@@ -38,7 +34,6 @@ public class HomepageLogoD extends ExtentReportBuilder {
 
     public void selectDollar(WebDriver driver) throws IOException, ParseException {
         try {
-            mthName = new Object() {}.getClass().getEnclosingMethod().getName();
             cm.click(driver, HomepageOR.CURRENCY_DROPDOWN);
             cm.click(driver, HomepageOR.CURRENCY_USD);
             ReportTestStep("USD currency selected", "PASS", "");
@@ -51,14 +46,11 @@ public class HomepageLogoD extends ExtentReportBuilder {
     public void registerUser(WebDriver driver, String fname, String lname, String email,
                              String phone, String pwd) throws IOException, ParseException {
         try {
-            mthName = new Object() {}.getClass().getEnclosingMethod().getName();
-
             cm.click(driver, HomepageOR.MY_ACCOUNT);
             cm.click(driver, HomepageOR.REGISTER);
-
             cm.setText(driver, HomepageOR.FIRSTNAME, fname);
             cm.setText(driver, HomepageOR.LASTNAME, lname);
-            cm.setText(driver, HomepageOR.EMAIL, email);
+            cm.setText(driver, HomepageOR.EMAIL, "vijendra_" + System.currentTimeMillis() + "@test.com");
             cm.setText(driver, HomepageOR.TELEPHONE, phone);
             cm.setText(driver, HomepageOR.PASSWORD, pwd);
             cm.setText(driver, HomepageOR.CONFIRM_PASSWORD, pwd);
@@ -78,8 +70,7 @@ public class HomepageLogoD extends ExtentReportBuilder {
 
     public void searchProduct(WebDriver driver, String product) throws IOException, ParseException {
         try {
-            mthName = new Object() {}.getClass().getEnclosingMethod().getName();
-
+            if (product == null || product.isEmpty()) return;
             cm.setText(driver, HomepageOR.SEARCH_BOX, product);
             cm.click(driver, HomepageOR.SEARCH_BUTTON);
 
@@ -87,11 +78,9 @@ public class HomepageLogoD extends ExtentReportBuilder {
             List<WebElement> prices = driver.findElements(HomepageOR.PRODUCT_PRICE);
 
             for (int i = 0; i < names.size(); i++) {
-                ReportTestStep("Product Found",
-                        "PASS",
+                ReportTestStep("Product Found", "PASS",
                         "Name: " + names.get(i).getText() + " | Price: " + prices.get(i).getText());
             }
-
         } catch (Exception e) {
             ReportTestStep("Exception in searchProduct", "FAIL", e.getMessage());
             Assert.fail();
@@ -100,16 +89,9 @@ public class HomepageLogoD extends ExtentReportBuilder {
 
     public void searchAllProducts(WebDriver driver) throws IOException, ParseException {
         try {
-            mthName = new Object() {}.getClass().getEnclosingMethod().getName();
-
-            String p1 = exceldata.readCell("products", "product1");
-            String p2 = exceldata.readCell("products", "product2");
-            String p3 = exceldata.readCell("products", "product3");
-
-            searchProduct(driver, p1);
-            searchProduct(driver, p2);
-            searchProduct(driver, p3);
-
+            searchProduct(driver, "MacBook");
+            searchProduct(driver, "iPhone");
+            searchProduct(driver, "Samsung");
         } catch (Exception e) {
             ReportTestStep("Exception in searchAllProducts", "FAIL", e.getMessage());
             Assert.fail();
@@ -118,11 +100,8 @@ public class HomepageLogoD extends ExtentReportBuilder {
 
     public void checkoutHP(WebDriver driver) throws IOException, ParseException {
         try {
-            mthName = new Object() {}.getClass().getEnclosingMethod().getName();
-
             cm.setText(driver, HomepageOR.SEARCH_BOX, "HP LP3065");
             cm.click(driver, HomepageOR.SEARCH_BUTTON);
-
             cm.click(driver, HomepageOR.HP_PRODUCT);
             cm.click(driver, HomepageOR.ADD_TO_CART);
             cm.click(driver, HomepageOR.CHECKOUT);
@@ -132,7 +111,6 @@ public class HomepageLogoD extends ExtentReportBuilder {
             } else {
                 ReportTestStep("Order placement failed", "FAIL", "");
             }
-
         } catch (Exception e) {
             ReportTestStep("Exception in checkoutHP", "FAIL", e.getMessage());
             Assert.fail();

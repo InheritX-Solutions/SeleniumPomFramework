@@ -3,7 +3,7 @@ package utilities;
 /**
  * Capture screenshot for full screen
  * 
- * @author Abirami
+ * @author Vijender Raika
  *  added on 28 Aug 2024
  */
 

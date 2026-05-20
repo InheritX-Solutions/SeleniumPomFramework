@@ -28,9 +28,9 @@ public class RWExcel {
 	XSSFCell cell;
 	String tdMod;
 	CommonUtilities objCU = new CommonUtilities();
-	String filepath = System.getProperty("user.dir") + "\\src\\main\\resources\\datapool\\" + "EnvData.properties";
-	String resourceFolderPath = objCU.readPropertyFile(filepath, "ResourcesPath");
-	String filePath = System.getProperty("user.dir") + resourceFolderPath + ("\\dataPool\\TestData.xlsx");
+	String filepath = System.getProperty("user.dir") + "/src/main/resources/datapool/" + "EnvData.properties";
+	String resourceFolderPath = "/src/main/resources";
+	String filePath = System.getProperty("user.dir") + resourceFolderPath + "/datapool/TestData.xlsx";
 
 	int rc, cc;
 
